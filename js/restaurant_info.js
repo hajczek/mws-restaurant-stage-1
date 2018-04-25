@@ -53,7 +53,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   name.innerHTML = restaurant.name;
 
   const address = document.getElementById('restaurant-address');
-  address.innerHTML = restaurant.address;
+  address.innerHTML += '<strong>' + restaurant.address + '</strong>';
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
@@ -61,7 +61,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   image.alt = 'Restaurant ' + restaurant.name + ' - photo';
 
   const cuisine = document.getElementById('restaurant-cuisine');
-  cuisine.innerHTML = restaurant.cuisine_type;
+  cuisine.innerHTML += '<strong>' + restaurant.cuisine_type + '</strong>';
 
   // fill operating hours
   if (restaurant.operating_hours) {
@@ -98,8 +98,8 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById('reviews-container');
   const title = document.createElement('h2');
   title.innerHTML = 'Reviews';
-  title.setAttribute("tabindex", 1);
   container.appendChild(title);
+  title.setAttribute("tabindex", 1);
 
   if (!reviews) {
     const noReviews = document.createElement('p');
