@@ -273,3 +273,8 @@ nav h1 a {
 #restaurant-hours td {
   color: #666;
 }
+
+#neighborhoods-select-info,
+#cuisine-select-info {
+    visibility: hidden;
+}
