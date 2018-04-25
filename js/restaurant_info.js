@@ -99,7 +99,7 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const title = document.createElement('h2');
   title.innerHTML = 'Reviews';
   container.appendChild(title);
-  title.setAttribute("tabindex", 1);
+  title.setAttribute("tabindex", 0);
 
   if (!reviews) {
     const noReviews = document.createElement('p');
