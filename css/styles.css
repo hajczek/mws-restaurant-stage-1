@@ -274,6 +274,7 @@ nav h1 a {
   color: #666;
 }
 #neighborhoods-select-info,
-#cuisine-select-info {
+#cuisine-select-info,
+#more-info {
     display: none;
 }
