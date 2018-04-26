@@ -1,7 +1,5 @@
-// Name for cache
-let cacheRestaurant = 'cacheRestaurant'; 
+let cacheRestaurant = 'cacheRestaurant-1'; 
 
-// Files to cache
 let cacheFiles = [
 	'./',
 	'./index.html',
@@ -14,55 +12,25 @@ let cacheFiles = [
     './img/medium/'
 ]
 
-// Install Service Worker
 self.addEventListener('install', function(e) {
-    console.log('Service Worker installed');
-
-    e.waitUntil(
-    	// Open the cache
-	    caches.open(cacheRestaurant).then(function(cache) {
-
-	    	// Add files to the cache
-			console.log('Service Worker caching files');
-			return cache.addAll(cacheFiles);
-	    })
-	);
+    e.waitUntil(caches.open(cacheRestaurant).then(function(cache) {
+        return cache.addAll(cacheFiles);
+    }));
 });
 
-// Activate Service Worker
-self.addEventListener('activate', function(e) {
-    console.log('Service Worker activated');
-
-    e.waitUntil(
-		caches.keys().then(function(cacheRestaurant) {
-			return Promise.all(cacheRestaurant.map(function(thisCacheName) {
-
-				// If a cached item is saved under a previous cacheName
-				if (thisCacheName !== cacheRestaurant) {
-
-					// Delete that cached file
-					console.log('Service Worker removing cached files from cache - ', thisCacheName);
-					return caches.delete(thisCacheName);
-				}
-			}));
-		})
-	);
-
+self.addEventListener('activate', function (e) {
+    e.waitUntil(caches.keys().then(function (cacheNames) {
+        return Promise.all(cacheNames.filter(function (cacheName) {
+            return cacheName.startsWith('cacheRestaurant') && cacheName !== cacheRestaurant;
+        }).map(function (cacheName) {
+            return caches.delete(cacheName);
+        }));
+    }));
 });
 
-self.addEventListener('fetch', function(e) {
-	console.log('Service Worker is fetch', e.request.url);
-
-	e.respondWith(
-        
-		caches.match(e.request)
-        
-        .then(function(response) {
-
-            if ( response ) {
-				console.log("Service Worker found in cache", e.request.url, response);
-				return response;
-            }
-        }) 
-	);
+self.addEventListener('fetch', function (e) {
+  e.respondWith(caches.match(e.request).then(function (response) {
+    console.log('Service Worker is fetch');
+    return response || fetch(e.request);
+  }));
 });
