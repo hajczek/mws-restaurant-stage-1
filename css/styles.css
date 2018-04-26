@@ -330,8 +330,7 @@ label {
       font-size: 1.5rem;
       line-height: 1;
       margin-bottom: 20px;
-    }
-    
+    }    
     label {
         font-size: 1.2rem;
         display: block;
@@ -342,14 +341,25 @@ label {
         position: relative;
         top: 10px;
     }
+    #restaurant-hours td {
+        font-size: 12pt;
+        padding: 3px 15px 3px 3px;
+    }
+    #reviews-container {
+        padding: 30px 25px 20px;
+    }
 
 }
 
-@media (max-width: 590px) {
+@media (max-width: 600px) {
     
     h1 {
         font-size: 14pt;
         letter-spacing: 5px;
+    }
+    #breadcrumb {
+        padding: 10px 0 16px;
+        width: 100%;
     }
     
     /* ====================== Restaurant Filtering ====================== */
@@ -375,9 +385,36 @@ label {
         top: 0;
         margin-top: 10px;
     }
-    
+    #restaurant-container, 
+    #reviews-container {
+       float: left;
+       width: 100%;
+    }
+    #restaurant-container {
+       padding: 140px 30px 20px 30px;
+    }
     #restaurants-list {
         padding-left: 0;
+    }
+    #restaurant-address {
+        width: 90%;
+    }
+    #map{
+        position: absolute;
+    }
+    .inside #map-container {
+        height: 400px;
+        position: relative;
+        right: 0;
+        top: 0;
+        width: 100%;
+        float: left;
+    }
+    .inside #footer {
+        float: left;
+        width: 100%;
+        position: relative;
+        top: 3px;
     }
 
 }
