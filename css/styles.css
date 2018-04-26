@@ -360,6 +360,9 @@ label {
     #breadcrumb {
         padding: 10px 0 16px;
         width: 100%;
+        margin: 0;
+        -webkit-margin-before: 0 !important;
+        -webkit-margin-after: 0 !important;
     }
     
     /* ====================== Restaurant Filtering ====================== */

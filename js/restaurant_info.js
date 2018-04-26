@@ -60,9 +60,9 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
     
   /* RESPONSIVE IMAGE */
-  image.srcset = DBHelper.imageUrlForRestaurantSmall(restaurant) + ' 500w, ' + DBHelper.imageUrlForRestaurantMedium(restaurant) + ' 1000w';
+  image.srcset = DBHelper.imageUrlForRestaurantSmall(restaurant) + ' 600w, ' + DBHelper.imageUrlForRestaurantMedium(restaurant) + ' 1000w';
     
-  image.sizes = '(min-width: 1300px) 1300px, (min-width: 1000px) 1000px,(min-width: 500px) 500px, 100vw'; 
+  image.sizes = '(min-width: 1000px) 1000px, (min-width: 600px) 600px, 100vw';
     
   image.alt = 'Restaurant ' + restaurant.name + ' - photo';
 
