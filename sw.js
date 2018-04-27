@@ -1,5 +1,7 @@
+// Cache name
 let cacheRestaurant = 'cacheRestaurant-1'; 
 
+// Files list to cache
 let cacheFiles = [
 	'./',
 	'./index.html',
@@ -12,6 +14,7 @@ let cacheFiles = [
     './img/medium'
 ]
 
+// Installation Service worker
 self.addEventListener('install', function(e) {
     e.waitUntil(caches.open(cacheRestaurant).then(function(cache) {
         console.log('Service Worker is installed');
@@ -19,6 +22,7 @@ self.addEventListener('install', function(e) {
     }));
 });
 
+// Activation Service worker
 self.addEventListener('activate', function (e) {
     e.waitUntil(caches.keys().then(function (cacheNames) {
         console.log('Service Worker is activated');
@@ -30,9 +34,10 @@ self.addEventListener('activate', function (e) {
     }));
 });
 
+// Fetch Service worker
 self.addEventListener('fetch', function (e) {
-  e.respondWith(caches.match(e.request).then(function (response) {
-    console.log('Service Worker is fetch');
-    return response || fetch(e.request);
-  }));
+    e.respondWith(caches.match(e.request).then(function (response) {
+        console.log('Service Worker is fetch');
+        return response || fetch(e.request);
+    }));
 });
