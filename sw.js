@@ -1,5 +1,5 @@
 // Cache name
-let cacheRestaurant = 'cacheRestaurant-1'; 
+let cacheRestaurant = 'cacheRestaurant-2'; 
 
 // Files list to cache
 let cacheFiles = [
@@ -16,28 +16,16 @@ let cacheFiles = [
 
 // Installation Service worker
 self.addEventListener('install', function(e) {
-    e.waitUntil(caches.open(cacheRestaurant).then(function(cache) {
-        console.log('Service Worker is installed');
-        return cache.addAll(cacheFiles);
-    }));
+    e.waitUntil(caches.open(cacheRestaurant).then(cache => cache.addAll(cacheFiles)));
 });
 
 // Activation Service worker
 self.addEventListener('activate', function (e) {
-    e.waitUntil(caches.keys().then(function (cacheNames) {
-        console.log('Service Worker is activated');
-        return Promise.all(cacheNames.filter(function (cacheName) {
-            return cacheName.startsWith('cacheRestaurant') && cacheName !== cacheRestaurant;
-        }).map(function (cacheName) {
-            return caches.delete(cacheName);
-        }));
-    }));
+    e.waitUntil(caches.keys().then(cacheNames => Promise.all(cacheNames.filter(cacheName => cacheName.startsWith('cacheRestaurant') && cacheName !== cacheRestaurant).map(cacheName => caches.delete(cacheName)))))
 });
+
 
 // Fetch Service worker
 self.addEventListener('fetch', function (e) {
-    e.respondWith(caches.match(e.request).then(function (response) {
-        console.log('Service Worker is fetch');
-        return response || fetch(e.request);
-    }));
+    e.respondWith(caches.match(e.request).then(response => response || fetch(e.request)));
 });
