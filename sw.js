@@ -14,12 +14,14 @@ let cacheFiles = [
 
 self.addEventListener('install', function(e) {
     e.waitUntil(caches.open(cacheRestaurant).then(function(cache) {
+        console.log('Service Worker is installed');
         return cache.addAll(cacheFiles);
     }));
 });
 
 self.addEventListener('activate', function (e) {
     e.waitUntil(caches.keys().then(function (cacheNames) {
+        console.log('Service Worker is  activated');
         return Promise.all(cacheNames.filter(function (cacheName) {
             return cacheName.startsWith('cacheRestaurant') && cacheName !== cacheRestaurant;
         }).map(function (cacheName) {
