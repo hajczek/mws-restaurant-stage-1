@@ -8,8 +8,8 @@ let cacheFiles = [
     './js/restaurant_info.js',
     './data/restaurants.json',
 	'./css/styles.css',
-    './img/small/',
-    './img/medium/'
+    './img/small',
+    './img/medium'
 ]
 
 self.addEventListener('install', function(e) {
@@ -21,7 +21,7 @@ self.addEventListener('install', function(e) {
 
 self.addEventListener('activate', function (e) {
     e.waitUntil(caches.keys().then(function (cacheNames) {
-        console.log('Service Worker is  activated');
+        console.log('Service Worker is activated');
         return Promise.all(cacheNames.filter(function (cacheName) {
             return cacheName.startsWith('cacheRestaurant') && cacheName !== cacheRestaurant;
         }).map(function (cacheName) {
