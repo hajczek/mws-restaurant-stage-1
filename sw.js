@@ -1,10 +1,11 @@
 // Cache name
-let cacheRestaurant = 'cacheRestaurant-3'; 
+let cacheRestaurant = 'cacheRestaurant-7'; 
 
 // Files list to cache
 let cacheFiles = [
 	'./',
 	'./index.html',
+    './restaurant.html',
     './js/dbhelper.js',
     './js/main.js',
     './js/restaurant_info.js',
@@ -32,11 +33,11 @@ self.addEventListener('activate', e => {
 
 
 // Fetch Service worker
-self.addEventListener('fetch', function (e) {
+self.addEventListener('fetch', e => {
     
     const url = new URL(e.request.url);
 
-    if (url.pathname.startsWith('/restaurant.html')) {
+    if (url.pathname.includes('restaurant.html')) {
           e.respondWith(
               caches.match('restaurant.html')
               .then(response => response || fetch(e.request))
