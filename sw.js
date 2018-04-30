@@ -26,7 +26,7 @@ self.addEventListener('install', e => {
 });
 
 // Activation Service worker
-self.addEventListener('activate', function (e) {
+self.addEventListener('activate', e => {
     e.waitUntil(caches.keys().then(cacheNames => Promise.all(cacheNames.filter(cacheName => cacheName.startsWith('cacheRestaurant') && cacheName !== cacheRestaurant).map(cacheName => caches.delete(cacheName)))))
 });
 
