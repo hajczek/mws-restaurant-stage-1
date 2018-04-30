@@ -372,6 +372,12 @@ label {
 
 @media (max-width: 730px) {
     
+    h2 {
+        -webkit-margin-before: 0 !important;
+        -webkit-margin-after: 0 !important;
+        width: 95%;
+    }
+    
     .filter-options {
       width: 100%;
       height: 150px;
@@ -400,13 +406,34 @@ label {
         top: 10px;
     }
     
+    #restaurant-hours {
+        width: 95%;
+    }
+    
     #restaurant-hours td {
         font-size: 12pt;
         padding: 3px 15px 3px 3px;
     }
     
     #reviews-container {
-        padding: 30px 25px 20px;
+        padding: 30px 3% 20px 3%;
+    }
+    
+    #reviews-list li {
+        width: 88%;
+        padding: 13px;
+    }
+    
+    #reviews-list li p {
+      margin: 0 0 5px;
+    }
+    
+    #restaurants-list li {
+        padding: 10px 10px 25px;
+    }
+    
+    #map-container h2 {
+        font-size: 1.3em;
     }
 }
 
@@ -415,7 +442,17 @@ label {
     
     h1 {
         font-size: 14pt;
-        letter-spacing: 5px;
+        letter-spacing: 3px;
+        -webkit-margin-before: 0 !important;
+        -webkit-margin-after: 0 !important;
+    }
+    
+    p {
+        float: left;
+        display: block;
+        padding-top: 20px;
+        -webkit-margin-before: 0 !important;
+        -webkit-margin-after: 0 !important;
     }
     
     #breadcrumb {
@@ -453,18 +490,26 @@ label {
     #restaurant-container, 
     #reviews-container {
        float: left;
-       width: 100%;
+       width: 94%;
     }
-    #restaurant-container {
-       padding: 140px 30px 20px 30px;
+    
+    #reviews-container h3 {
+        font-size: 20pt;
     }
     
     #restaurants-list {
-        padding-left: 0;
+        padding: 0;
     }
     
-    #restaurant-address {
-        width: 90%;
+    #restaurant-address,
+    #restaurant-cuisine,
+    #restaurant-hours-title,
+    #restaurant-img {
+        width: 100%;
+    }
+    
+    #restaurant-cuisine {
+        letter-spacing: 5px;
     }
     
     #map {
@@ -482,8 +527,16 @@ label {
     
     .inside #footer {
         float: left;
-        width: 100%;
+        width: 94%;
         position: relative;
         top: 3px;
+    }
+    
+    #footer p {
+        color: #eee;
+        margin: 0;
+        padding: 0;
+        -webkit-margin-before: 0 !important;
+        -webkit-margin-after: 0 !important;
     }
 }
